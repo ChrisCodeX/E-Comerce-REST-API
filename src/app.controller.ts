@@ -1,8 +1,10 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, UseGuards, SetMetadata } from '@nestjs/common';
 import { AppService } from './app.service';
 
 import { ApiKeyGuard } from './auth/guards/api-key.guard';
 
+// Guard protect all controllers
+@UseGuards(ApiKeyGuard)
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
@@ -12,8 +14,9 @@ export class AppController {
     return this.appService.getHello();
   }
 
+
   // Endpoint access protected by guard
-  @UseGuards(ApiKeyGuard)
+  // @UseGuards(ApiKeyGuard)
   @Get('/tasks')
   getTasks() {
     return this.appService.getTasks();
