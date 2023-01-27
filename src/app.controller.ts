@@ -14,6 +14,12 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  // Set metadata to this context
+  @Get('/nuevo')
+  @SetMetadata('isPublic', true)
+  newEndpoint() {
+    return 'hello';
+  }
 
   // Endpoint access protected by guard
   // @UseGuards(ApiKeyGuard)
