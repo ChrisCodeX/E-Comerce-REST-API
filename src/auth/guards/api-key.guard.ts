@@ -18,6 +18,12 @@ export class ApiKeyGuard implements CanActivate {
   ): boolean | Promise<boolean> | Observable<boolean> {
     // Access granted: true - Access denied: false
 
+    // Validate 'isPublic' metadata
+    const isPublic = this.reflector.get('isPublic', context.getHandler());
+    if (isPublic) {
+      return true;
+    }
+
     // Get request
     const request = context.switchToHttp().getRequest<Request>();
     const authHeader = request.header('Auth');
