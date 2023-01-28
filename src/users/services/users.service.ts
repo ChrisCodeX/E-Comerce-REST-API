@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import * as bcrypt from 'bcrypt';
 
 import { ProductsService } from 'src/products/services/products.service';
 import { User } from 'src/users/entities/user.entity';
@@ -38,11 +39,28 @@ export class UsersService {
     });
   }
 
+  async findByEmail(email: string) {
+    return new Promise<User>((resolve) => {
+      const user = this.userModel.findOne({ email }).exec();
+      resolve(user);
+    });
+  }
+
   async create(payload: CreateUserDto) {
     return new Promise(async (resolve) => {
+      // Get model
       const newUser = new this.userModel(payload);
+
+      // Hashing password
+      const hashPassword = await bcrypt.hash(newUser.password, 10);
+      newUser.password = hashPassword;
+
+      // Save Model
       const savedUser = await newUser.save();
-      resolve(savedUser);
+
+      // Return excluding password
+      const { password, ...rta } = savedUser.toJSON();
+      resolve(rta);
     });
   }
 
