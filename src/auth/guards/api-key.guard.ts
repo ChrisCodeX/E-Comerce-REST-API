@@ -7,6 +7,9 @@ import {
 import { Reflector } from '@nestjs/core';
 import { Observable } from 'rxjs';
 import { Request } from 'express';
+
+import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
+
 // The guard will be injected any controller
 @Injectable()
 export class ApiKeyGuard implements CanActivate {
@@ -19,7 +22,7 @@ export class ApiKeyGuard implements CanActivate {
     // Access granted: true - Access denied: false
 
     // Validate 'isPublic' metadata
-    const isPublic = this.reflector.get('isPublic', context.getHandler());
+    const isPublic = this.reflector.get(IS_PUBLIC_KEY, context.getHandler());
     if (isPublic) {
       return true;
     }
