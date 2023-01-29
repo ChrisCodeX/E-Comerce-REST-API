@@ -9,8 +9,11 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+
 import { MongoIdPipe } from 'src/common/mongo-id/mongo-id.pipe';
 
 /* This is a pipe customized */
@@ -26,6 +29,8 @@ import {
   UpdateProductDto,
 } from '../dtos/products.dto';
 
+// All endpoints protected by jwt
+@UseGuards(AuthGuard('jwt'))
 @ApiTags('products')
 @Controller('products')
 export class ProductsController {
