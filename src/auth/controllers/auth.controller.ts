@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  // Endpoint protected by local guard
   @UseGuards(AuthGuard('local'))
   @Post('/login')
   async login(@Req() req: Request) {
