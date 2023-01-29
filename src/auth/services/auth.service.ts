@@ -7,13 +7,16 @@ import { UsersService } from 'src/users/services/users.service';
 export class AuthService {
   constructor(private userService: UsersService) {}
 
-  async validateUser(email: string, password: string) {
-    const user = await this.userService.findByEmail(email);
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (user && isMatch) {
-      const { password, ...rta } = user.toJSON();
-      return rta;
+  async validateUser(userEmail: string, userPassword: string) {
+    const user = await this.userService.findByEmail(userEmail);
+    if (!user) {
+      return null;
     }
-    return null;
+    const isMatch = await bcrypt.compare(userPassword, user.password);
+    if (!isMatch) {
+      return null;
+    }
+    const { password, ...rta } = user.toJSON();
+    return rta;
   }
 }
