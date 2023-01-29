@@ -14,6 +14,7 @@ import config from 'config';
 
 @Module({
   imports: [
+    // Config module configuration
     ConfigModule.forRoot({
       envFilePath: environments[process.env.NODE_ENV] || '.env',
       load: [config],
@@ -26,6 +27,7 @@ import config from 'config';
         DATABASE_PORT: Joi.number().required(),
       }),
     }),
+    // Module for make http request - Check documentation
     HttpModule,
     UsersModule,
     ProductsModule,

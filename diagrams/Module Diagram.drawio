@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Página-1" id="yESMt9GBMHRnWEEiburn">
-        <mxGraphModel dx="965" dy="1060" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="965" dy="589" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="dclaJgIqaxpQT9fOpFvf-1" parent="0"/>
@@ -115,7 +115,7 @@
                     <mxGeometry x="220" y="430" width="10" height="10" as="geometry"/>
                 </mxCell>
                 <mxCell id="3CdT-HHU7qoBIwi8riyQ-11" value="Products Module" style="html=1;dropTarget=0;labelBorderColor=none;fontSize=18;" parent="dclaJgIqaxpQT9fOpFvf-1" vertex="1">
-                    <mxGeometry x="570" y="430" width="180" height="70" as="geometry"/>
+                    <mxGeometry x="570" y="430" width="210" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="3CdT-HHU7qoBIwi8riyQ-12" value="" style="shape=module;jettyWidth=8;jettyHeight=4;labelBorderColor=none;fontSize=18;html=1;" parent="3CdT-HHU7qoBIwi8riyQ-11" vertex="1">
                     <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
