@@ -59,7 +59,6 @@ export class ProductsController {
     };
   }
 
-  /* Post Methods */
   // Metadata injection by decorator
   @Roles(Role.ADMIN)
   @Post()
@@ -71,7 +70,6 @@ export class ProductsController {
     };
   }
 
-  /* Patch Methods */
   @Patch('/:id')
   async update(
     @Param('id', MongoIdPipe) id: string,
