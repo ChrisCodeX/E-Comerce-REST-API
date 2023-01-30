@@ -8,7 +8,16 @@ import { LocalStrategy } from './strategies/local.strategy';
 import { AuthController } from './controllers/auth.controller';
 
 @Module({
-  imports: [PassportModule, UsersModule, JwtModule],
+  imports: [
+    PassportModule,
+    UsersModule,
+    JwtModule.register({
+      secret: 'secret key',
+      signOptions: {
+        expiresIn: '10d',
+      },
+    }),
+  ],
   // Implementing Local strategy
   providers: [AuthService, LocalStrategy],
   controllers: [AuthController],
