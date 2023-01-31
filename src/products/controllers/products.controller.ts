@@ -15,6 +15,8 @@ import { ApiTags } from '@nestjs/swagger';
 
 import { MongoIdPipe } from 'src/common/mongo-id/mongo-id.pipe';
 import { Public } from 'src/auth/decorators/public.decorator';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { Role } from 'src/auth/models/roles.models';
 
 /* This is a pipe customized */
 // import { ParseIntPipe } from 'src/common/parse-int/parse-int.pipe';
@@ -58,6 +60,8 @@ export class ProductsController {
   }
 
   /* Post Methods */
+  // Metadata injection by decorator
+  @Roles(Role.ADMIN)
   @Post()
   async create(@Body() payload: CreateProductDto) {
     const newProduct = await this.productService.create(payload);
