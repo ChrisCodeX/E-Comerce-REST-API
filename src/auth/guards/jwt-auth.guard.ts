@@ -14,7 +14,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
   // Sustituyendo el método canActivate de AuthGuard por una validación
   // Si en los metadatos se encuentra el PUBLIC_KEY, lo deja pasar.
-  // De lo contrario hace la validación de Auth Guard
+  // De lo contrario hace la validación de Auth s Guard
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
