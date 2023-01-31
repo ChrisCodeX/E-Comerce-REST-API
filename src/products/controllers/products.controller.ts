@@ -33,10 +33,13 @@ import {
 
 // JWT auth guard
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
 
 // All endpoints protected by jwt - way 1
 // @UseGuards(AuthGuard('jwt'))
-@UseGuards(JwtAuthGuard)
+// Way 2 (Only 1 validation) - @UseGuards(JwtAuthGuard)
+// Multiple validation, de acuerdo al orden
+@UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('products')
 @Controller('products')
 export class ProductsController {

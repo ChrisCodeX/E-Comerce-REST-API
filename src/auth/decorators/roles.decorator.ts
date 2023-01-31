@@ -6,4 +6,4 @@ import { Role } from '../models/roles.models';
 export const ROLES_KEY = 'roles';
 
 // Metadata injection
-export const Roles = (...roles: Role[]) => SetMetadata(ROLES_KEY, true);
+export const Roles = (...roles: Role[]) => SetMetadata(ROLES_KEY, roles);

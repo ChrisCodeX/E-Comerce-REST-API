@@ -4,7 +4,7 @@ import {
   ExecutionContext,
   Inject,
   Injectable,
-  UnauthorizedException,
+  ForbiddenException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Observable } from 'rxjs';
@@ -41,7 +41,7 @@ export class ApiKeyGuard implements CanActivate {
     const authHeader = request.header('Auth');
     const isAuth = authHeader === this.configService.apiKey;
     if (!isAuth) {
-      throw new UnauthorizedException(
+      throw new ForbiddenException(
         'not allow, auth header does not match expected',
       );
     }
