@@ -1,5 +1,7 @@
 import { SetMetadata } from '@nestjs/common';
 
+// Metadata declaration
 export const IS_PUBLIC_KEY = 'isPublic';
 
-export const Public = () => SetMetadata('isPublic', true);
+// Metadata injection
+export const Public = () => SetMetadata(IS_PUBLIC_KEY, true);

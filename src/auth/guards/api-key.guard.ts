@@ -1,3 +1,4 @@
+// Acces validation - Public decorator
 import {
   CanActivate,
   ExecutionContext,
@@ -17,25 +18,25 @@ import config from 'config';
 // The guard will be injected any controller
 @Injectable()
 export class ApiKeyGuard implements CanActivate {
-  // Helper class for get the context
   constructor(
+    // Reflector, helper class for get the context
     private reflector: Reflector,
     // Config injection
     @Inject(config.KEY) private configService: ConfigType<typeof config>,
   ) {}
 
+  /* Methods */
+  // Access granted: true - Access denied: false
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
-    // Access granted: true - Access denied: false
-
-    // Validate 'isPublic' metadata
+    // 'isPublic' metadata validation by context
     const isPublic = this.reflector.get(IS_PUBLIC_KEY, context.getHandler());
     if (isPublic) {
       return true;
     }
 
-    // Get request
+    // Auth header validation by apiKey in config
     const request = context.switchToHttp().getRequest<Request>();
     const authHeader = request.header('Auth');
     const isAuth = authHeader === this.configService.apiKey;
