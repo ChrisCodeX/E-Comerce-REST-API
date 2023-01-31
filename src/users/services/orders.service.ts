@@ -34,6 +34,13 @@ export class OrdersService {
     });
   }
 
+  async ordersByCustomer(customerId: string) {
+    return new Promise(async (resolve) => {
+      const customer = await this.orderModel.find({ customerId }).exec();
+      resolve(customer);
+    });
+  }
+
   async create(payload: CreateOrderDto) {
     return new Promise(async (resolve) => {
       const newOrder = new this.orderModel(payload);
