@@ -8,10 +8,9 @@ Each application service is separated into modules that correspond to their resp
 ## **Table of Contents** 📖  
 1. [Pre-Requirements](#pre-requirements-)
 2. [Installation](#installation-)
-3. [Running the app](#http-endpoints-desktop_computer)
-4. [HTTP Endpoints](#websocket-)
-5. [Module Architecture](#websocket-)
-
+3. [Running the app](#running-the-app-)
+4. [HTTP Endpoints](#http-endpoints-desktop_computer)
+5. [Module Architecture](#module-architecture-)
 ---
 
 ## **Pre-Requirements** 📋  
