@@ -22,8 +22,13 @@ Docker will allow you to connect to the MongoDB database.
 ---
 
 ## **Installation** 🔧
+- Once Docker is installed and running.
+```bash
+$ docker-compose up -d
+```
+This will create a container with the mongodb database.
 
-- Install the necessary dependencies for this project
+- Install the necessary dependencies for this project.
 ```bash
 $ npm install
 ```
